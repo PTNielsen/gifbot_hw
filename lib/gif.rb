@@ -1,4 +1,5 @@
 class Gif < ActiveRecord::Base
+  
   validates :url, presence: true, uniqueness: true
   validates_presence_of :creator, :seen_count
 
@@ -16,4 +17,5 @@ class Gif < ActiveRecord::Base
   def all_tags
     tags.pluck(:name).join(", ")
   end
+
 end
