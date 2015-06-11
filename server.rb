@@ -21,8 +21,8 @@ class Gifty < Sinatra::Base
 
   post "/tag_gif" do
     gifty = GifBot.new
-    gif = gifty.tag_gif
-  
+    gif = gifty.tag_gif params[:id], params[:tag_name]
+    gif.to_json
   end  
   
 end
