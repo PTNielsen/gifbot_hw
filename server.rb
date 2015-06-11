@@ -24,7 +24,7 @@ class Gifty < Sinatra::Base
     gif = gifty.tag_gif
   
   end  
-
+  
 end
 
 
