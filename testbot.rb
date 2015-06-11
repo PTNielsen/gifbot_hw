@@ -70,10 +70,8 @@ class GifBotTest < MiniTest::Test
   end
 
   def test_user_input_must_be_complete
-    u = User.create! name: "username"
-    g = Gif.create! url: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRxqFQoTCK-6zeetiMYCFURsrQodjkAATA&url=http%3A%2F%2Fgiphy.com%2Fsearch%2Frick-astley&ei=Id95Ve-lGMTYtQWOgYHgBA&bvm=bv.95277229,d.b2w&psig=AFQjCNHlGzpaJOCK9fy3tV9Pe7Nq5Fy3yg&ust=1434136730270158", creator_id: u.id, seen_count: 0
-
-    post "/add", name: "username"
+    post "/add", 
+      link:  "http://giphy.com/gifs/adventure-time-cartoons-confetti-9sVS967nejlqU"
 
     assert_equal 400, last_response.status
     assert_equal 0, Gif.count

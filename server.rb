@@ -8,9 +8,13 @@ class Gifty < Sinatra::Base
   set :bind, "0.0.0.0"
 
   post "/add" do 
-      gifty = GifBot.new
-      gif = gifty.add_gif params[:link], params[:username]
-      gif.id.to_json
+      if params[:link] && params[:username]  
+        gifty = GifBot.new
+        gif = gifty.add_gif params[:link], params[:username]
+        gif.id.to_json
+      else
+        400
+      end
   end
 
   get "/view_all_gifs" do
@@ -23,10 +27,9 @@ class Gifty < Sinatra::Base
     gifty = GifBot.new
     gif = gifty.tag_gif params[:id], params[:tag_name]
     gif.to_json
-  end  
+  end
 
 end
-
 
 if $PROGRAM_NAME == __FILE__
 MyServer.run!
