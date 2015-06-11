@@ -8,12 +8,12 @@ class Gifty < Sinatra::Base
   set :bind, "0.0.0.0"
 
   post "/add" do 
-    gifty = GifBot.new
-    gif = gifty.add_gif params[:link], params[:username]
-    gif.id.to_s
+      gifty = GifBot.new
+      gif = gifty.add_gif params[:link], params[:username]
+      gif.id.to_json
   end
 
-  get "/view_gifs" do
+  get "/view_all_gifs" do
     gifty = GifBot.new
     gif = gifty.all_gifs
     gif.to_json
@@ -24,7 +24,7 @@ class Gifty < Sinatra::Base
     gif = gifty.tag_gif params[:id], params[:tag_name]
     gif.to_json
   end  
-  
+
 end
 
 
