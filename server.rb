@@ -11,8 +11,12 @@ class Gifty < Sinatra::Base
   	gifty = GifBot.new
   	gif = gifty.add_gif params[:link], params[:username]
   	gif.id.to_s
-  end 
+  end  
+  
+  # get "/tag/:id" do
 end
 
-# MyServer.run!
-# end
+
+if $PROGRAM_NAME == __FILE__
+MyServer.run!
+end

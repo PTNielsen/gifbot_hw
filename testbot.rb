@@ -30,11 +30,15 @@ class GifBotTest < MiniTest::Test
   def test_users_can_add_gifs
 
   	post "/add", 
-  	link:  "http://giphy.com/gifs/dance-adventure-time-jake-ALCI3eTii7qOk",
-  	username: "username"
+  	 link:  "http://giphy.com/gifs/adventure-time-cartoons-confetti-9sVS967nejlqU",
+  	 username: "username"
 
 
     assert_equal 200, last_response.status
+
+    assert_equal 1, Gif.count
+
+    assert_equal "http://giphy.com/gifs/adventure-time-cartoons-confetti-9sVS967nejlqU", Gif.last.url
 
     # gif = Gif.find_by_id
 
@@ -46,10 +50,13 @@ class GifBotTest < MiniTest::Test
   # # end
 
   # def test_users_can_tag_gifs
-  # end
+
+    # get "/tag"
+    # id: 
+    # tag_name: 
+
 
   # def test_users_can_view_a_gif
   # end
 end
-
 
