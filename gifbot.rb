@@ -5,6 +5,7 @@ require './lib/all'
 
 class GifBot
   def add_gif link, username
+    binding.pry
     user = User.where(name: username).first_or_create!
     #Gif.create! url: link, creator_id: user.id
     user.gifs.create! url: link, seen_count: 0
