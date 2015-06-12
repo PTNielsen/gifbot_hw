@@ -87,7 +87,6 @@ class GifBotTest < MiniTest::Test
     5.times do get "/get_gif"
     end
     random_gif = JSON.parse last_response.body
-    binding.pry
     assert_equal 200, last_response.status
     assert_equal 5, random_gif["seen_count"]
   end
