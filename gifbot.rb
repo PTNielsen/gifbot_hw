@@ -26,6 +26,13 @@ class GifBot
     #GifTag.create! tag_id: tag.id, gif_id: gif.id
     gif.tags << tag
   end
+
+  # def view_tagged_gif tag_name
+  #   tt = Tag.where(name: tag_name).first
+  #   gt = GifTag.where(tag_id: tn.id)
+  #   gf = Gif.where(id: vt.gif_id)
+  # end
+
 end
 
 # gifbot  = GifBot.new

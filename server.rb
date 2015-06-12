@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require "./gifbot"
 require 'pry'
 
 class Gifty < Sinatra::Base
@@ -8,7 +9,7 @@ class Gifty < Sinatra::Base
   set :bind, "0.0.0.0"
 
   post "/add" do 
-      if params[:link] && params[:username]  
+      if params[:link] && params[:username] 
         gifty = GifBot.new
         gif = gifty.add_gif params[:link], params[:username]
         gif.id.to_json
@@ -36,8 +37,15 @@ class Gifty < Sinatra::Base
     random_gif.to_json
   end
 
+  # get "/tagged_gif" do
+  #   gifty = GifBot.new
+  #   tagged_gif = gifty.view_tagged_gif params[:tag_name]
+  #   tagged_gif.has_been_seen!
+  #   tagged_gif.to_json
+  # end
+
 end
 
 if $PROGRAM_NAME == __FILE__
-MyServer.run!
+Gifty.run!
 end
