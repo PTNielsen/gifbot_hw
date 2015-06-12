@@ -80,6 +80,18 @@ class GifBotTest < MiniTest::Test
     assert_equal 1, random_gif["seen_count"]
   end
 
+  def test_track_seen_count_properly
+    u = User.create! name: "username"
+    g = Gif.create! url: "http://giphy.com/gifs/kitten-pixel-pikachu-2s9zkB4NawQlq", creator_id: u.id, seen_count: 0
+
+    5.times do get "/get_gif"
+    end
+    random_gif = JSON.parse last_response.body
+    binding.pry
+    assert_equal 200, last_response.status
+    assert_equal 5, random_gif["seen_count"]
+  end
+
   def test_user_input_must_be_complete
     post "/add", 
       link:  "http://giphy.com/gifs/adventure-time-cartoons-confetti-9sVS967nejlqU"
