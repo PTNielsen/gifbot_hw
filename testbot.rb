@@ -67,6 +67,17 @@ class GifBotTest < MiniTest::Test
   end
 
   def test_users_can_view_random_gifs
+    u = User.create! name: "username"
+    g = Gif.create! url: "http://giphy.com/gifs/kitten-pixel-pikachu-2s9zkB4NawQlq", creator_id: u.id, seen_count: 0
+    i = Gif.create! url: "http://giphy.com/gifs/batman-shocked-what-11LPqjefhW3ACk", creator_id: u.id, seen_count: 0
+    f = Gif.create! url: "http://giphy.com/gifs/kanye-west-interview-hip-hop-9cmVjltMzhPUY", creator_id: u.id, seen_count: 0
+    s = Gif.create! url: "http://giphy.com/gifs/archer-reactiongifs-mrw-AckmGL4e1i7M4", creator_id: u.id, seen_count: 0
+
+    get "/view_random_gif"
+
+    assert_equal 200, last_response.status
+    assert_equal 1, Gif.seen_count
+
   end
 
   def test_user_input_must_be_complete

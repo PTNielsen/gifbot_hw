@@ -29,6 +29,13 @@ class Gifty < Sinatra::Base
     gif.to_json
   end
 
+  get "/view_random_gif" do
+    gifty = GifBot.new
+    random_gif = gifty.all_gifs.sample
+    random_gif.has_been_seen!
+    random_gif.to_json
+  end
+
 end
 
 if $PROGRAM_NAME == __FILE__
