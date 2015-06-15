@@ -70,17 +70,17 @@ class GifBotTest < MiniTest::Test
   #   u = User.create! name: "username"
   #   g = Gif.create! url: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRxqFQoTCK-6zeetiMYCFURsrQodjkAATA&url=http%3A%2F%2Fgiphy.com%2Fsearch%2Frick-astley&ei=Id95Ve-lGMTYtQWOgYHgBA&bvm=bv.95277229,d.b2w&psig=AFQjCNHlGzpaJOCK9fy3tV9Pe7Nq5Fy3yg&ust=1434136730270158", creator_id: u.id, seen_count: 0
   #   i = Gif.create! url: "http://giphy.com/gifs/batman-shocked-what-11LPqjefhW3ACk", creator_id: u.id, seen_count: 0
-  #   t = Tag.create! name: "Rick Astley"
+  #   t = Tag.create! name: "Batman"
 
-  #   post "/tag_gif", id: t.id, tag_name: t.name
+  #   post "/tag_gif", id: i.id, tag_name: t.name
 
   #   get "/tagged_gif", tag_name: t.name
 
-  #   tagged_gif = GifTag.find_by(gif_id: g.id)
+  #   tagged_gif = JSON.parse last_response.body
 
   #   assert_equal 200, last_response.status
   #   binding.pry
-  #   assert_equal g.id, tagged_gif.gif_id
+  #   assert_equal i.id, tagged_gif["id"]
   # end
 
   def test_users_can_view_random_gifs
